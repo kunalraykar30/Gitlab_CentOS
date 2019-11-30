@@ -1,0 +1,23 @@
+---
+# Author : Kunal Raykar
+# Playbook written to install and configure gitlab on the Centos 7 system. 
+# Tested on the GCP instance 
+- hosts: localhost
+  become: yes
+
+  tasks:
+   - name: Install Packages
+     yum: name={{ item }} update_cache=yes state=latest
+     with_items:
+       - curl
+       - policycoreutils-python
+       - postfix
+
+   - name: Add Gitlab Repo and install pkg
+     shell: curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+
+   - name: Install Gitlab 
+     yum: name=gitlab-ce update_cache=yes state=latest
+
+   - name: Running configuration for Gitlab
+     shell: gitlab-ctl reconfigure
