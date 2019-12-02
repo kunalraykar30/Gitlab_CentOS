@@ -18,6 +18,12 @@
 
    - name: Install Gitlab 
      yum: name=gitlab-ce update_cache=yes state=latest
+     
+   - name: Disable the default CICD of GitLab
+     lineinfile:
+       path: /var/tmp/file
+       line: gitlab_rails['gitlab_default_projects_features_builds'] = true
+       create: yes
 
    - name: Running configuration for Gitlab
      shell: gitlab-ctl reconfigure
