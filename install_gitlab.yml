@@ -16,9 +16,13 @@
    - name: Add Gitlab Repo and install pkg
      shell: curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
 
+# Installing the CE version of GitLab
+
    - name: Install Gitlab 
      yum: name=gitlab-ce update_cache=yes state=latest
      
+# Default CICD of GitLab is disabled. If you want to use Gitlab for CICD you can remove this code. 
+
    - name: Disable the default CICD of GitLab
      lineinfile:
        path: /var/tmp/file
