@@ -1,3 +1,2 @@
 # Gitlab
-Installation of Gitlab. Playbook designed to do installation and configuration of the gitlab.
-Tested on GCP and VM instances. Please note playbook runs on the localhost.
+Playbook works butter smooth with the VM instances of GCP. I cloned the git repo of the ELK on my GCP VM and then ran runsetup.yaml. For GCP instances you need to install git/ansible. Please note playbook runs on the localhost.
